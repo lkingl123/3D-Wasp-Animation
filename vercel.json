@@ -1,6 +1,6 @@
 {
     "routes": [
-      { "src": "/wasp.glb", "dest": "/public/wasp.glb" }
+      { "src": "/(.*)", "dest": "/index.html" }
     ]
   }
   
