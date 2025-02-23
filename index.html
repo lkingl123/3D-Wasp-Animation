@@ -99,7 +99,7 @@
     // Load Wasp Model
     let wasp, mixer;
     const loader = new THREE.GLTFLoader();
-    loader.load('models/wasp.glb', function (gltf) {
+    loader.load('/wasp.glb', function (gltf) {
         wasp = gltf.scene;
         wasp.scale.set(0.2, 0.2, 0.2);
         wasp.position.set(0, 2, 0); // Start Position
