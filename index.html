@@ -99,22 +99,22 @@
     // Load Wasp Model
     let wasp, mixer;
     const loader = new THREE.GLTFLoader();
-    loader.load('/wasp.glb', function (gltf) {
+    loader.load('/wasp.glb', 
+    function (gltf) {
+        console.log("✅ Model Loaded Successfully");
         wasp = gltf.scene;
         wasp.scale.set(0.2, 0.2, 0.2);
-        wasp.position.set(0, 2, 0); // Start Position
+        wasp.position.set(0, 2, 0);
         scene.add(wasp);
+    }, 
+    function (xhr) { 
+        console.log(`🔄 Loading wasp.glb: ${(xhr.loaded / xhr.total * 100)}% loaded`); 
+    }, 
+    function (error) { 
+        console.error("❌ Error loading the wasp model:", error);
+    }
+);
 
-        // If model has animations, play them
-        if (gltf.animations.length > 0) {
-            mixer = new THREE.AnimationMixer(wasp);
-            gltf.animations.forEach((clip) => {
-                mixer.clipAction(clip).play();
-            });
-        }
-    }, undefined, function (error) {
-        console.error('Error loading the wasp model:', error);
-    });
 
     // Camera Position
     camera.position.set(0, 1, 5);
